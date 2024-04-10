@@ -54,9 +54,8 @@ This works by doing the following steps:
     tokens (segments of text) to help you debug what is different.
 
 If this tool doesn’t detect drift, it doesn’t mean drift doesn’t exist.
-It just means we didn’t find it. However, I’ve found run into this
-simple kind of drift enough times that having a way to quickly check
-saves time.
+It just means we didn’t find it. However, I’ve run into this kind of
+drift more often than other kind.
 
 ## TODO
 
