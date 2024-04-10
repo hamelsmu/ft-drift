@@ -34,11 +34,13 @@ important tokens that account for the drift are shown, such as:
 - “\`\`\`json”
 - etc.
 
+**Currently, `ft_drift` only detects drift in prompt templates and other
+token-based drift (as opposed to semantic drift)**.
+
 ## Usage
 
 After installing `ft_drift`, the cli command `detect_drift` will be
-available to you. **Currently, `ft_drift` only detects drift in prompt
-templates and other token-based drift (as opposed to semantic drift)**.
+available to you.
 
 ![](drift_cli.gif)
 
