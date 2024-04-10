@@ -40,3 +40,29 @@ After installing `ft_drift`, the cli command `detect_drift` will be
 available to you.
 
 ![](drift_cli.gif)
+
+## How Does it Work?
+
+This works by doing the following steps:
+
+1.  Fit a binary classifier (random forest) to discriminate between two
+    datasets.
+2.  If the classifier can predict a material difference (ex: AUC \>=
+    0.60) then we know there is drift (something is systematically
+    different b/w the two datasets).
+3.  We show the most important features from the classifier which are
+    tokens (segments of text) to help you debug what is different.
+
+If this tool doesn’t detect drift, it doesn’t mean drift doesn’t exist.
+It just means we didn’t find it. However, I’ve found run into this
+simple kind of drift enough times that having a way to quickly check
+saves time.
+
+## TODO
+
+This is a very basic drift detector! Other things that could be added:
+
+- [ ] Semantic drift by incorporating embeddings.
+- [ ] More features: length of messages, \# of turns, etc etc.
+- [ ] Wiring up the function definition diff to the CLI (I don’t need
+  this yet for my use case).
