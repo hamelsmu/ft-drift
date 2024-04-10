@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "ft-drift"
+  site-url: "https://hamelsmu.github.io/ft-drift"
+  description: "Check for data drift with OAI data"
+  repo-branch: main
+  repo-url: "https://github.com/hamelsmu/ft-drift"
