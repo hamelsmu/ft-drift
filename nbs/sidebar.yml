@@ -1,0 +1,7 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - 01_parse.ipynb
+      - 02_compare_funcs.ipynb
+      - 03_model.ipynb
