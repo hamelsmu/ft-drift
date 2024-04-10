@@ -7,15 +7,21 @@
 [multi-turn chat jsonl
 files](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-dataset).
 
-## Why
+## Install
+
+``` sh
+pip install ft_drift
+```
+
+## How to use
 
 Common situations where you want to check for dataset drift:
 
 1.  You fine-tuned a new model but it doesn’t work the way you expect
-    compared to a previous model on different data.
+    compared to a previous model trained on different data.
 2.  Your model is trained on data that doesn’t reflect production.
 
-In either situation, you can collect your data from the relevant source
+In either situation, you can collect your data from the relevant sources
 and compare them to see if the data has changed in ways that are
 undesirable.
 
@@ -27,12 +33,7 @@ following tokens were found to be different:
 - “\`\`\`json”
 - etc.
 
-## Install
-
-``` sh
-pip install ft_drift
-```
-
-## How to use
+After installing `ft_drift`, the cli command `detect_drift` will be
+available to you.
 
 ![](first.gif)
