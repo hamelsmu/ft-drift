@@ -54,12 +54,15 @@ This works by doing the following steps:
     tokens (segments of text) to help you debug what is different.
 
 If this tool doesn’t detect drift, it doesn’t mean drift doesn’t exist.
-It just means we didn’t find it. However, I’ve run into this kind of
-drift more often than other kind.
+It just means we didn’t find it. For more background on this approach,
+see this slide from [my talk on MLOps
+tools](https://www.youtube.com/watch?v=GHk5HMW4XMA):
+
+![](drift_tfx.png)
 
 ## TODO
 
-This is a very basic drift detector! Other things that could be added:
+Other things that could be added:
 
 - [ ] Semantic drift by incorporating embeddings.
 - [ ] More features: length of messages, \# of turns, etc etc.
