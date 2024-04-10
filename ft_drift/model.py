@@ -29,7 +29,6 @@ def prep_data(f1='file_a.jsonl',
 
     # Create a DataFrame
     df = pd.DataFrame({'text': data, 'label': labels})
-    print('\nDataframe created with', len(df), 'rows.')
     return df
 
 # %% ../nbs/03_model.ipynb 5
