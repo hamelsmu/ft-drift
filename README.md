@@ -14,4 +14,4 @@ pip install ft_drift
 
 ## How to use
 
-TODO
+![](first.gif)
