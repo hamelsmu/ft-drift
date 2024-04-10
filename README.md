@@ -34,8 +34,8 @@ important tokens that account for the drift are shown, such as:
 - “\`\`\`json”
 - etc.
 
-**Currently, `ft_drift` only detects drift in prompt templates and other
-token-based drift (as opposed to semantic drift)**.
+**Currently, `ft_drift` only detects drift in prompt templates, schemas
+and other token-based drift (as opposed to semantic drift)**.
 
 ## Usage
 
