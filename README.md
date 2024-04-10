@@ -13,7 +13,7 @@ files](https://platform.openai.com/docs/guides/fine-tuning/preparing-your-datase
 pip install ft_drift
 ```
 
-## How to use
+## Background
 
 Common situations where you want to check for dataset drift:
 
@@ -32,6 +32,8 @@ following tokens were found to be different:
 - `UI-FORMAT`
 - “\`\`\`json”
 - etc.
+
+## Usage
 
 After installing `ft_drift`, the cli command `detect_drift` will be
 available to you.
