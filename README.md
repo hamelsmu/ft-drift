@@ -15,18 +15,19 @@ pip install ft_drift
 
 ## Background
 
-Common situations where you want to check for dataset drift:
+Checking for dataset drift can help you debug if:
 
-1.  You fine-tuned a new model but it doesn’t work the way you expect
-    compared to a previous model trained on different data.
-2.  Your model is trained on data that doesn’t reflect production.
+1.  Your model is trained on data that doesn’t reflect production
+    (different prompts, functions, etc).
+2.  Your training data contains unexpected or accidental artifacts.
 
-In either situation, you can collect your data from the relevant sources
-and compare them to see if the data has changed in ways that are
-undesirable.
+In either situation, you can compare data from relevant sources
+(i.e. production vs fine-tuning) to find unwanted changes. This is one
+of the most common source of errors when fine-tuning models!
 
-In the demo below, we detect data drift between two datasets where the
-following tokens were found to be different:
+The demo below shows a cli tool used to detect data drift between two
+files, `file_a.jsonl` and `file_b.jsonl`. Afterwards, a table of
+important tokens that account for the drift are shown, such as:
 
 - `END-UI-FORMAT`
 - `UI-FORMAT`
