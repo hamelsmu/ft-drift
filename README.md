@@ -39,4 +39,4 @@ important tokens that account for the drift are shown, such as:
 After installing `ft_drift`, the cli command `detect_drift` will be
 available to you.
 
-![](first.gif)
+![](drift_cli.gif)
