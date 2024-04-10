@@ -65,6 +65,6 @@ tools](https://www.youtube.com/watch?v=GHk5HMW4XMA):
 Other things that could be added:
 
 - [ ] Semantic drift by incorporating embeddings.
-- [ ] More features: length of messages, \# of turns, etc etc.
+- [ ] More features: length of messages, \# of turns etc.
 - [ ] Wiring up the function definition diff to the CLI (I don’t need
   this yet for my use case).
