@@ -4,4 +4,18 @@ on:  [workflow_dispatch, pull_request, push]
 jobs:
   test:
     runs-on: ubuntu-latest
-    steps: [uses: fastai/workflows/nbdev-ci@master]
+    steps:
+      
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: '${{ secrets.SA_KEY }}'
+  
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+
+      - name: Download secure file from gsutil
+        run: gsutil cp gs://rechat-data/file_a.jsonl .
+
+      - name: Run tests
+        uses: fastai/workflows/nbdev-ci@master
