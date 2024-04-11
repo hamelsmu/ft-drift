@@ -15,7 +15,9 @@ jobs:
         uses: 'google-github-actions/setup-gcloud@v2'
 
       - name: Download secure file from gsutil
-        run: gsutil cp gs://rechat-data/file_a.jsonl .
+        run: | 
+          gsutil cp gs://rechat-data/file_a.jsonl nbs/
+          gsutil cp gs://rechat-data/file_a.jsonl nbs/
 
       - name: Run tests
         uses: fastai/workflows/nbdev-ci@master
