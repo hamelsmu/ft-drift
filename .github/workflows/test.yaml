@@ -20,6 +20,10 @@ jobs:
           gsutil cp gs://rechat-data/file_a.jsonl nbs/
           gsutil cp gs://rechat-data/file_a.jsonl nbs/
 
+      - name: Look
+        run: |
+          ls -l nbs/
+
       - uses: actions/setup-python@v4
         with:
           python-version: ${{ inputs.version }}
@@ -76,6 +80,4 @@ jobs:
           if [ ! $SKIP_TEST ]; then
             nbdev_test --flags "$FLAGS"
           fi
-
-
 
