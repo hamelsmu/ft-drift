@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ft-drift",
+    "section": "",
+    "text": "ft-drift helps you check for data drift by comparing two OpenAI multi-turn chat jsonl files.",
+    "crumbs": [
+      "ft-drift"
+    ]
+  },
+  {
+    "objectID": "index.html#install",
+    "href": "index.html#install",
+    "title": "ft-drift",
+    "section": "Install",
+    "text": "Install\npip install ft_drift",
+    "crumbs": [
+      "ft-drift"
+    ]
+  },
+  {
+    "objectID": "index.html#background",
+    "href": "index.html#background",
+    "title": "ft-drift",
+    "section": "Background",
+    "text": "Background\nChecking for dataset drift can help you debug if:\n\nYour model is trained on data that doesn’t reflect production (different prompts, functions, etc).\nYour training data contains unexpected or accidental artifacts.\n\nIn either situation, you can compare data from relevant sources (i.e. production vs fine-tuning) to find unwanted changes. This is one of the most common source of errors when fine-tuning models!\nThe demo below shows a cli tool used to detect data drift between two files, file_a.jsonl and file_b.jsonl. Afterwards, a table of important tokens that account for the drift are shown, such as:\n\nEND-UI-FORMAT\nUI-FORMAT\n“```json”\netc.\n\nCurrently, ft_drift only detects drift in prompt templates, schemas and other token-based drift (as opposed to semantic drift).",
+    "crumbs": [
+      "ft-drift"
+    ]
+  },
+  {
+    "objectID": "index.html#usage",
+    "href": "index.html#usage",
+    "title": "ft-drift",
+    "section": "Usage",
+    "text": "Usage\nAfter installing ft_drift, the cli command detect_drift will be available to you.",
+    "crumbs": [
+      "ft-drift"
+    ]
+  },
+  {
+    "objectID": "index.html#how-does-it-work",
+    "href": "index.html#how-does-it-work",
+    "title": "ft-drift",
+    "section": "How Does it Work?",
+    "text": "How Does it Work?\nThis works by doing the following steps:\n\nFit a binary classifier (random forest) to discriminate between two datasets.\nIf the classifier can predict a material difference (ex: AUC &gt;= 0.60) then we know there is drift (something is systematically different b/w the two datasets).\nWe show the most important features from the classifier which are tokens (segments of text) to help you debug what is different.\n\nIf this tool doesn’t detect drift, it doesn’t mean drift doesn’t exist. It just means we didn’t find it. For more background on this approach, see this slide from my talk on MLOps tools:",
+    "crumbs": [
+      "ft-drift"
+    ]
+  },
+  {
+    "objectID": "index.html#todo",
+    "href": "index.html#todo",
+    "title": "ft-drift",
+    "section": "TODO",
+    "text": "TODO\nOther things that could be added:\n\nSemantic drift by incorporating embeddings.\nMore features: length of messages, # of turns etc.\nWiring up the function definition diff to the CLI (I don’t need this yet for my use case).",
+    "crumbs": [
+      "ft-drift"
+    ]
+  },
+  {
+    "objectID": "parse.html",
+    "href": "parse.html",
+    "title": "parse",
+    "section": "",
+    "text": "ChatData helps you load and parse OpenAI jsonl data.\n\nsource\n\n\n\n ChatData (data)\n\nProcess multi-turn chat data from openai.\n\n_a_data = ChatData.load_jsonl('file_a.jsonl') \n_b_data = ChatData.load_jsonl('file_b.jsonl')\nassert len(_a_data.funcs) == 13\nassert len(_b_data.funcs) == 13\nassert _a_data.consistent and _b_data.consistent\nassert len(_a_data.to_md()) == 2284\n\nLoaded 2284 rows from file_a.jsonl\nLoaded 2284 rows from file_b.jsonl",
+    "crumbs": [
+      "parse"
+    ]
+  },
+  {
+    "objectID": "parse.html#load-parse-data",
+    "href": "parse.html#load-parse-data",
+    "title": "parse",
+    "section": "",
+    "text": "ChatData helps you load and parse OpenAI jsonl data.\n\nsource\n\n\n\n ChatData (data)\n\nProcess multi-turn chat data from openai.\n\n_a_data = ChatData.load_jsonl('file_a.jsonl') \n_b_data = ChatData.load_jsonl('file_b.jsonl')\nassert len(_a_data.funcs) == 13\nassert len(_b_data.funcs) == 13\nassert _a_data.consistent and _b_data.consistent\nassert len(_a_data.to_md()) == 2284\n\nLoaded 2284 rows from file_a.jsonl\nLoaded 2284 rows from file_b.jsonl",
+    "crumbs": [
+      "parse"
+    ]
+  },
+  {
+    "objectID": "compare_funcs.html",
+    "href": "compare_funcs.html",
+    "title": "compare_funcs",
+    "section": "",
+    "text": "_a_data = ChatData.load_jsonl('file_a.jsonl') \n_b_data = ChatData.load_jsonl('file_b.jsonl')\n\nLoaded 2284 rows from file_a.jsonl\nLoaded 2284 rows from file_b.jsonl\n\n\n\nDiff Functions\nSome of this code is domain-specific to Rechat.\n\nsource\n\n\ndiff_funcs\n\n diff_funcs (list1:List[dict], list2:List[dict])\n\nCompare two lists of functions.\n\n_diff = diff_funcs(_a_data.funcs, _b_data.funcs)\nassert _diff['msg'] == 'No differences found.'\n\n\nsource\n\n\nexplain_func_diff\n\n explain_func_diff (differences_output)\n\nUse a LLM to provide a human-readable explanation of differences in function definitions.\n\nres = explain_func_diff(_diff)\nprint(res)\n\nThe comparison of the function definitions did not identify any differences.",
+    "crumbs": [
+      "compare_funcs"
+    ]
+  },
+  {
+    "objectID": "cli.html",
+    "href": "cli.html",
+    "title": "cli",
+    "section": "",
+    "text": "source\n\nrich_feat_imp\n\n rich_feat_imp (df)\n\nRender a feature importance dataframe ad a rich table.\n\nsource\n\n\nmain\n\n main (f1:str, f2:str)\n\nCompare two openai jsonl files.\n\n\n\n\nType\nDetails\n\n\n\n\nf1\nstr\njsonl file #1\n\n\nf2\nstr\njsonl file #2",
+    "crumbs": [
+      "cli"
+    ]
+  },
+  {
+    "objectID": "model.html",
+    "href": "model.html",
+    "title": "model",
+    "section": "",
+    "text": "source\n\nprep_data\n\n prep_data (f1='file_a.jsonl', f2='file_b.jsonl')\n\n\n_df = prep_data()\nassert len(_df) == 4568\n\nLoaded 2284 rows from file_a.jsonl\nLoaded 2284 rows from file_b.jsonl\n\n\n\nsource\n\n\nmodel\n\n model (df)\n\nFit a model and calculate diagnostics.\n\nclf = model(_df)\n\n\nclf.roc_auc\n\n0.9652849641638879\n\n\n\nclf.top_features.head(15)\n\n\n\n\n\n\n\n\n\nFeature\nImportance\n\n\n\n\n0\n&lt;|END-UI-FORMAT|&gt; Role\n0.071926\n\n\n1\n&lt;|UI-FORMAT|&gt; id\n0.051172\n\n\n2\nRole function &lt;|JSON-FORMAT|&gt;\n0.051035\n\n\n3\n&lt;|END-UI-FORMAT|&gt; Role assistant\n0.050680\n\n\n4\n&lt;|UI-FORMAT|&gt;\n0.050151\n\n\n5\n&lt;|END-JSON-FORMAT|&gt; Role assistant\n0.048927\n\n\n6\n&lt;|END-JSON-FORMAT|&gt; Role\n0.047124\n\n\n7\n&lt;|JSON-FORMAT|&gt;\n0.046406\n\n\n8\n```json id\n0.042374\n\n\n9\nassistant ```json\n0.039353\n\n\n10\nfunction &lt;|UI-FORMAT|&gt;\n0.037131\n\n\n11\nfunction &lt;|JSON-FORMAT|&gt; id\n0.028249\n\n\n12\n&lt;|JSON-FORMAT|&gt; id\n0.028228\n\n\n13\n&lt;|END-JSON-FORMAT|&gt;\n0.027623\n\n\n14\n&lt;|END-UI-FORMAT|&gt;\n0.026620",
+    "crumbs": [
+      "model"
+    ]
+  }
+]
